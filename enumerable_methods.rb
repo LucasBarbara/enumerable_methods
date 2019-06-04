@@ -4,8 +4,16 @@ module Enumerable
       yield(self[i])
     end
   end
+
+  def my_each_with_index
+    self.length.times do |i|
+      yield(self[i], i)
+    end
+  end
+
 end
 
-[1, 2].my_each do |item| 
-  puts (2 * item)
+[1, 2].my_each_with_index do |item, index| 
+  puts item
+  puts index
 end
