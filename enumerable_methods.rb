@@ -6,14 +6,20 @@ module Enumerable
   end
 
   def my_each_with_index
-    self.length.times do |i|
+    i = 0
+    while i < self.length
       yield(self[i], i)
+      i += 1
     end
   end
 
-end
+  def my_select
+    new_array = []
 
-[1, 2].my_each_with_index do |item, index| 
-  puts item
-  puts index
+    self.my_each do |element|
+      new_array << element if yield(element)
+    end
+    new_array
+  end
+
 end
