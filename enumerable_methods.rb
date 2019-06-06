@@ -22,4 +22,17 @@ module Enumerable
     new_array
   end
 
+  def my_all?
+    self.my_each do |element|
+      return false if !yield(element)
+    end
+    true
+  end
+
+  def my_any?
+    self.my_each do |element|
+      return true if yield(element)
+    end
+    false
+  end
 end
