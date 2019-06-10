@@ -55,7 +55,19 @@ module Enumerable
         i = self.length
       end
     end
+
     i
+  end
+
+  def my_map
+    new_array = []
+
+    self.my_each do |element|
+      new_element = yield(element)
+      new_array << new_element
+    end
+
+    new_array
   end
 
 end
