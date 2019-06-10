@@ -70,4 +70,28 @@ module Enumerable
     new_array
   end
 
+  def my_inject(memo = nil)
+    accum = memo ? memo : self[0]
+
+    if accum != memo
+      i = 1
+      while i < self.length
+        accum = yield(accum, self[i])
+        i += 1
+      end
+    else
+      self.my_each do |element|
+        accum = yield(accum, element)
+      end
+    end
+
+    accum
+  end
+
+end
+
+def multiply_els(array)
+  array.my_inject do |x, n| 
+    x * n 
+  end
 end
