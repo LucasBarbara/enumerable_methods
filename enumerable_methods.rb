@@ -42,4 +42,20 @@ module Enumerable
     end
     true
   end
+
+  def my_count(obj = nil)
+    i = 0
+
+    self.my_each do |element|
+      if block_given?
+        i += 1 if yield element
+      elsif obj != nil
+        i += 1 if element == obj
+      else
+        i = self.length
+      end
+    end
+    i
+  end
+
 end
