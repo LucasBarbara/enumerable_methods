@@ -59,11 +59,11 @@ module Enumerable
     i
   end
 
-  def my_map
+  def my_map(&block)
     new_array = []
 
     self.my_each do |element|
-      new_element = yield(element)
+      new_element = block ? (block.call element) : yield(element)
       new_array << new_element
     end
 
